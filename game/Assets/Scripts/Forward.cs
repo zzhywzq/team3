@@ -27,7 +27,7 @@ public class Forward : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
         string name = col.gameObject.name;
-        if (name.Contains("Soldier") || name.Contains("Mesh") || name.Contains("Barre") )
+        if (name.Contains("Soldier") || name.Contains("Mesh") || name.Contains("Barre") || name.Contains("box"))
         {
             Destroy(this.gameObject);
         }
