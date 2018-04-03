@@ -5,6 +5,8 @@ using UnityEngine;
 public class Soldier : MonoBehaviour {
 
     Dictionary<string, int> bag =  new Dictionary<string, int>();
+    public int defend = 5;
+    public int jump_high = 5;
     
 	// Use this for initialization
 	void Start () {
