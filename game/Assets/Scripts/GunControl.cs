@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunControl : MonoBehaviour {
     GunComponent[] gunControllers;
     int index = 0;
+	int before = 0;
     // Use this for initialization
     void Start () {
         gunControllers = transform.GetComponentsInChildren<GunComponent>();
@@ -23,9 +24,12 @@ public class GunControl : MonoBehaviour {
         }
 
     }
+	GameObject getcurrentGun(){
+		return gunControllers[index].gameObject;
+	}
     GameObject changeGun(GameObject g)
     {
-        int before = index;
+		before=index;
         int i = 0;
         while (gunControllers[i].gameObject.name!=g.name && i < gunControllers.Length)
         {
