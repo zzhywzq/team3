@@ -8399,6 +8399,18 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 270
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
   m_IsPrefabParent: 0
@@ -13540,6 +13552,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1633692232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1633692230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913f1418fa7ffbd45bd48033b023fa75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1633692235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15830,6 +15853,7 @@ GameObject:
   - component: {fileID: 1886873602}
   - component: {fileID: 1886873601}
   - component: {fileID: 1886873600}
+  - component: {fileID: 1886873603}
   m_Layer: 5
   m_Name: Child_btn1
   m_TagString: Untagged
@@ -15894,7 +15918,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1886873601}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1886873603}
+        m_MethodName: Item_OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1886873601
@@ -15930,6 +15965,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1886873598}
+--- !u!114 &1886873603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886873598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f975ee760a6b8d4081333ad6ad46be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldier_name: Soldier_all_parts
+  btn_name: Child_btn1
+  obj: {fileID: 1369978331617016, guid: a5ccf5bf374cfbf4e915c42d5963f493, type: 2}
 --- !u!1001 &1889805616
 Prefab:
   m_ObjectHideFlags: 0
