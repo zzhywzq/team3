@@ -27,6 +27,7 @@ public class Item_Click : MonoBehaviour
     {
         //由于不能直接删除修改字典，所以创建一个存储字典的列表
         List<string> needChangeList = new List<string>();
+        string[] strArray ;//用于截取字符串，创建原对象
         //将字典内容赋值给列表
         if (bag != null && bag.Count > 0)
         {
@@ -34,8 +35,9 @@ public class Item_Click : MonoBehaviour
             {
                 if (GameObject.Find("Canvas/Image1/C_Button" + btn_id + "/Text").GetComponent<Text>().text.Contains(item.Key))//如果找到拥有此键的
                 {
+                    strArray = item.Key.Split('(');
                     for (int i=0; i<item.Value;i++) {
-                        Instantiate(GameObject.Find(item.Key), new Vector3(soldier.transform.position.x, soldier.transform.position.y+3, soldier.transform.position.z), Quaternion.identity);//xyz次序
+                        Instantiate(GameObject.Find(strArray[0]), new Vector3(soldier.transform.position.x, soldier.transform.position.y+3, soldier.transform.position.z), Quaternion.identity);//xyz次序
                     } 
                     needChangeList.Add(item.Key);
                 }
