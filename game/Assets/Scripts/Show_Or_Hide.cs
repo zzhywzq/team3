@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Show_Or_Hide : MonoBehaviour
 {
-    GameObject obj;
+    GameObject obj;//要隐藏的对象
+
     void Start()
     {
         obj = GameObject.Find("Image1");
@@ -19,6 +20,7 @@ public class Show_Or_Hide : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             show_hide();
+
         }
     }
     public void show_hide()//显示或隐藏

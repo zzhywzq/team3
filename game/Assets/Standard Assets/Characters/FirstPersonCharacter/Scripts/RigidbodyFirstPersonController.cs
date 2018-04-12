@@ -8,6 +8,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (CapsuleCollider))]
     public class RigidbodyFirstPersonController : MonoBehaviour
     {
+        public GameObject bag_img;//背包图片
         [Serializable]
         public class MovementSettings
         {
@@ -230,7 +231,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // get the rotation before it's changed
             float oldYRotation = transform.eulerAngles.y;
 
-            mouseLook.LookRotation (transform, cam.transform);
+            if (bag_img.activeSelf)//如果背包打开
+                mouseLook.LookRotation(transform, null);//只监听旋转，不固定鼠标
+            else
+                mouseLook.LookRotation (transform, cam.transform);
+            
 
             if (m_IsGrounded || advancedSettings.airControl)
             {
