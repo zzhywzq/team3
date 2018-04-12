@@ -27,7 +27,7 @@ public class Soldier : MonoBehaviour {
         i = 1;
         foreach (KeyValuePair<string, int> item in bag)//背包展现在UI上
         {
-            txt=GameObject.Find("Canvas/Image1/C_Button" + i + "/Text").GetComponent<Text>();
+            txt = GameObject.Find("Canvas/Image1/C_Button" + i + "/Text").GetComponent<Text>();
             txt.text = item.Key + ": " + item.Value;
             i++;
         }
