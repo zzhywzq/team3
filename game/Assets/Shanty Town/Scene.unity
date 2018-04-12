@@ -7221,6 +7221,10 @@ Prefab:
       propertyPath: m_PlayAutomatically
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 196882, guid: 3b5ab3dd72d54ff46ab6be8c31770ac8, type: 2}
+      propertyPath: m_Name
+      value: Bip001 R Hand
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11185050, guid: 3b5ab3dd72d54ff46ab6be8c31770ac8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3b5ab3dd72d54ff46ab6be8c31770ac8, type: 2}
@@ -7315,6 +7319,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ef4340a0270ff49a942eb8680485f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &829602323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 829602300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6b82af2949bd447aa73e68cd3798c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blast: {fileID: 1287103272425498, guid: 2aeb171efbb8fc04e841b996da64d458, type: 2}
+  bag_img: {fileID: 1644411001}
 --- !u!1001 &835305740
 Prefab:
   m_ObjectHideFlags: 0
@@ -15757,7 +15774,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1828050089}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce6b82af2949bd447aa73e68cd3798c8, type: 3}
   m_Name: 

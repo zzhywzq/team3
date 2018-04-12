@@ -15,7 +15,6 @@ public class Pickable_prop : MonoBehaviour {
     void OnCollisionEnter(Collision col)//将这个脚本添加给物体X，参数col是与物体X产生碰撞的对象
     {
         string name = col.gameObject.name;
-        Debug.Log(name);
         if (name.Contains("RigidBodyFPSController") && Input.GetKey(KeyCode.F) )//如果检测到物体X是人物  并且 玩家按下F
         {
             GameObject.Find("Soldier_all_parts").GetComponent<Soldier>().add_prop(gameObject.name, 1);//给soldier的bag添加物品

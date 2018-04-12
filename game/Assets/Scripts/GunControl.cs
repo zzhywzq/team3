@@ -26,7 +26,7 @@ public class GunControl : MonoBehaviour {
         }
 
     }
-    GameObject changeGun(GameObject g)
+    public GameObject changeGun(GameObject g)
     {
         int before = index;
         int i = 0;
@@ -39,5 +39,19 @@ public class GunControl : MonoBehaviour {
         gunControllers[index].gameObject.SetActive(true);
         return gunControllers[before].gameObject;
     }
+    
+    public void changeGunById(int i)
+    {
+        int before = index;
+        index = i;
+        gunControllers[before].gameObject.SetActive(false);
+        gunControllers[index].gameObject.SetActive(true);
+    }
+
+    public int getCurrentGun()
+    {
+        return index;
+    }
+
 
 }

@@ -22,11 +22,31 @@ public class Fire : MonoBehaviour
             Quaternion camera_rotation = Camera.transform.rotation;
             Vector3 camera_forward = Camera.transform.forward;
             Vector3 pos = gameObject.transform.position;
-
-            //GameObject p = GameObject.Find("Soldier_all_parts");
+            
 
             GameObject k = Instantiate(blast, pos, camera_rotation);
-            k.GetComponent<Rigidbody>().AddForce(camera_forward * 100);
+            int curGun = gameObject.GetComponentInParent<GunControl>().getCurrentGun();
+            Debug.Log(curGun);
+            switch (curGun)
+            {
+                case 0:
+                    k.GetComponent<Forward>().timetodestroy = 2;
+                    k.GetComponent<Rigidbody>().AddForce(camera_forward * 100);
+                    break;
+                case 1:
+                    k.GetComponent<Forward>().timetodestroy = 0.14f;
+                    k.GetComponent<Rigidbody>().AddForce(camera_forward * 200);
+                    break;
+                case 2:
+                    k.GetComponent<Forward>().timetodestroy = 1;
+                    k.GetComponentInParent<Rigidbody>().mass = 0.5f;
+                    k.GetComponent<Rigidbody>().AddForce(camera_forward * 250);
+                    break;
+                case 3:
+                    k.GetComponent<Forward>().timetodestroy = 2;
+                    k.GetComponent<Rigidbody>().AddForce(camera_forward * 100);
+                    break;
+            }
         }
     }
 }

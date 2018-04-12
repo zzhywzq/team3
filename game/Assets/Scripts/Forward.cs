@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Forward : MonoBehaviour
 {
-    private float timetodestroy;
+    public float timetodestroy;
 
     // Use this for initialization使用它来初始化
     void Start()
     {
-        //GameObject.rigidbody.constantForce游戏对象、刚体、恒力
-        timetodestroy = 2;
+
     }
 
     // Update is called once per frame逐帧召唤更新一次
