@@ -26,7 +26,7 @@ public class Fire : MonoBehaviour
 
             GameObject k = Instantiate(blast, pos, camera_rotation);
             int curGun = gameObject.GetComponentInParent<GunControl>().getCurrentGun();
-            Debug.Log(curGun);
+            //Debug.Log(curGun);
             switch (curGun)
             {
                 case 0:
