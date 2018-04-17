@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Soldier : MonoBehaviour {
+
     Dictionary<string, int> bag =  new Dictionary<string, int>();//键值对数组 <名字，数量>
     public int defend = 5;
     public int jump_high = 5;
     public int btn_size=3;
+
     // Use this for initialization
     void Start () {
         
@@ -16,21 +18,21 @@ public class Soldier : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {//持续检测背包的更新，并将更新在UI上表现出来
-        int i;
-        Text txt;     
-        for (i = 0; i < btn_size;)//清文本,
-        {
-            i++;
-            txt = GameObject.Find("Canvas/Image1/C_Button" + i + "/Text").GetComponent<Text>();
-            txt.text = "";
-        }
-        i = 1;
-        foreach (KeyValuePair<string, int> item in bag)//背包展现在UI上
-        {
-            txt = GameObject.Find("Canvas/Image1/C_Button" + i + "/Text").GetComponent<Text>();
-            txt.text = item.Key + ": " + item.Value;
-            i++;
-        }
+        //int i;
+        //Text txt;     
+        //for (i = 0; i < btn_size;)//清文本,
+        //{
+        //    i++;
+        //    txt = GameObject.Find("Canvas/Image1/C_Button" + i + "/Text").GetComponent<Text>();
+        //    txt.text = "";
+        //}
+        //i = 1;
+        //foreach (KeyValuePair<string, int> item in bag)//背包展现在UI上
+        //{
+        //    txt = GameObject.Find("Canvas/Image1/C_Button" + i + "/Text").GetComponent<Text>();
+        //    txt.text = item.Key + ": " + item.Value;
+        //    i++;
+        //}
     }
 
     public Dictionary<string, int> get_bag()
@@ -79,6 +81,5 @@ public class Soldier : MonoBehaviour {
                 bag.Remove(item);
             }
         }
-        
     }
 }

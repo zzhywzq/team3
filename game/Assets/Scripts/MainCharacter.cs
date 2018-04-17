@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MainCharacter : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -16,10 +16,8 @@ public class MainCharacter : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        Debug.Log(GameManager.Instance);
         CharacterManager cm = GameManager.Instance.getCharacterManager();
         bool isAlive = cm.dealCollision(col);//交由角色管理器处理
-        Debug.Log(isAlive);
         if (!isAlive)
         {
             Destroy(this.gameObject);//人物死亡处理。目前销毁相机，后期跳转场景

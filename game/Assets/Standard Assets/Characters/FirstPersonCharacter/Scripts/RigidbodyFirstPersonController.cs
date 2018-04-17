@@ -231,10 +231,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // get the rotation before it's changed
             float oldYRotation = transform.eulerAngles.y;
 
-            if (bag_img.activeSelf)//如果背包打开
-                mouseLook.LookRotation(transform, null);//只监听旋转，不固定鼠标
-            else
-                mouseLook.LookRotation (transform, cam.transform);
+            //if (bag_img.activeSelf)//如果背包打开
+            //    mouseLook.LookRotation(transform, null);//只监听旋转，不固定鼠标
+            //else
+            mouseLook.LookRotation (transform, cam.transform);
             
 
             if (m_IsGrounded || advancedSettings.airControl)

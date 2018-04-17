@@ -7,7 +7,7 @@ public class PropManager : MonoBehaviour {
     public GameObject[] obj;//存放unity拖拽进来的模型，用于随机生成
     public int item_num;//生成物品数 
 
-    Dictionary<GameObject, Vector3> all_prop;
+    Dictionary<GameObject, Vector3> all_prop = new Dictionary<GameObject, Vector3>();
 
     public void init()
     {

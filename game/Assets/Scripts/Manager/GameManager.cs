@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     public static BossManager bossManager;
     public static PropManager propManager;
     public static CharacterManager characterManager;
+    public static CanvasManager canvasManager;
 
     private static void init()
     {
@@ -28,11 +29,16 @@ public class GameManager : MonoBehaviour {
         {
             characterManager = FindObjectOfType(typeof(CharacterManager)) as CharacterManager;
         }
+        if (null == canvasManager)
+        {
+            canvasManager = FindObjectOfType(typeof(CanvasManager)) as CanvasManager;
+        }
     }
 
     void Start()
     {
         init();
+        canvasManager.init();
         bossManager.init();
         propManager.init();
         characterManager.init();
@@ -65,6 +71,11 @@ public class GameManager : MonoBehaviour {
     public CharacterManager getCharacterManager()
     {
         return characterManager;
+    }
+
+    public CanvasManager getCanvasManager()
+    {
+        return canvasManager;
     }
 
 }

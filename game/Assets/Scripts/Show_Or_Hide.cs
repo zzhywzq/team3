@@ -10,7 +10,7 @@ public class Show_Or_Hide : MonoBehaviour
 
     void Start()
     {
-        obj = GameObject.Find("Image1");
+        obj = GameManager.Instance.getCanvasManager().getCanvas().transform.Find("Image1").gameObject;
         obj.SetActive(false);
     }
 
@@ -20,7 +20,6 @@ public class Show_Or_Hide : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             show_hide();
-
         }
     }
     public void show_hide()//显示或隐藏
