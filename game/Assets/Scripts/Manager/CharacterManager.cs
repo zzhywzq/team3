@@ -8,7 +8,7 @@ public class CharacterManager : MonoBehaviour {
     private GameObject RigidBodyFPSController;
     public GameObject prefab;
     public int blood = 100;
-    Dictionary<GameObject, int> bag = new Dictionary<GameObject, int>();//键值对数组 <名字，数量>
+    Dictionary<string, int> bag = new Dictionary<string, int>();//键值对数组 <名字，数量>
     public int defend = 5;
     public int jump_high = 5;
 
@@ -35,7 +35,7 @@ public class CharacterManager : MonoBehaviour {
         return RigidBodyFPSController;
     }
 
-    public Dictionary<GameObject, int> getBag()
+    public Dictionary<string, int> getBag()
     {
         return bag;
     }
@@ -57,7 +57,7 @@ public class CharacterManager : MonoBehaviour {
                 break;
 
         }
-        //判断人物血量是否
+        //判断人物血量
         if (blood <= 0)
         {
             return false;
@@ -68,20 +68,47 @@ public class CharacterManager : MonoBehaviour {
         }
     }
 
-    public void addProp(GameObject prop_name, int prop_num)
+    public void addProp(string prop, int prop_num)
     {
-        if (bag.ContainsKey(prop_name))
+        if (bag.ContainsKey(prop))
         {
-            bag[prop_name] += prop_num;//物品数加一
+            bag[prop] += prop_num;//物品数加一
         }
         else
         {
-            bag.Add(prop_name, prop_num);//在字典中添加一个新的物品
+            bag.Add(prop, prop_num);//在字典中添加一个新的物品
         }
     }
 
-    public void useProp(int btn_id)//点下按钮是第几个，给按钮添加脚本后应输入的参数
+    public void useProp(string prop_name)//点下按钮是第几个，给按钮添加脚本后应输入的参数
     {
+        GameObject p = RigidBodyFPSController;
+        foreach (string item in bag.Keys)
+        {
+            if (item.StartsWith(prop_name) && bag[item] > 0)
+            {
+                GameObject prefab = null;
+                switch (item)
+                {
+                    case "Cube1(Clone)":
+                        prefab = GameManager.Instance.getPropManager().obj[0];
+                        break;
+                    case "Cube2(Clone)":
+                        prefab = GameManager.Instance.getPropManager().obj[1];
+                        break;
+                    case "Cube3(Clone)":
+                        prefab = GameManager.Instance.getPropManager().obj[2];
+                        break;
+                }
+                GameManager.Instance.getPropManager().addProp(prefab, new Vector3(p.transform.position.x, p.transform.position.y + 3, p.transform.position.z));
+                bag[item]--;
+                if (bag[item] <= 0)
+                {
+                    bag.Remove(item);
+                }
+            }
+        }
+
         ////1. 由于不能直接删除修改字典，所以创建一个存储字典的列表
         //List<string> needChangeList = new List<string>();
         //string[] strArray;//用于截取字符串，创建原对象
@@ -90,12 +117,12 @@ public class CharacterManager : MonoBehaviour {
         //{
         //    foreach (var item in bag)
         //    {
-        //        if (GameObject.Find("Canvas/Image1/C_Button" + btn_id + "/Text").GetComponent<Text>().text.Contains(item.Key))//如果找到拥有此键的
+        //        if (GameManager.Instance.getCanvasManager().getCanvas().transform.Find("Image1/C_Button" + btn_id + "/Text").GetComponent<Text>().text.Contains(item.Key.name))//如果找到拥有此键的
         //        {
         //            strArray = item.Key.name.Split('(');//分割
         //            for (int i = 0; i < item.Value; i++)//创建item.Key对象，数量为item.Value个
         //            {
-        //                Instantiate(GameObject.Find(strArray[0]), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 3, gameObject.transform.position.z), Quaternion.identity);//xyz次序
+                        
         //            }
         //            needChangeList.Add(item.Key.name);
         //        }

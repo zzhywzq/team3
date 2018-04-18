@@ -25,19 +25,19 @@ public class CanvasManager : MonoBehaviour {
         GameObject obj = canvas.transform.Find("Image1").gameObject;
         if (obj.activeSelf)
         {
-            Dictionary<GameObject, int> bag = GameManager.Instance.getCharacterManager().getBag();
+            Dictionary<string, int> bag = GameManager.Instance.getCharacterManager().getBag();
             int i;
             Text txt;
             for (i = 1; i <= btn_size; i++)//清文本
             {
-                txt = obj.transform.Find("Image1/C_Button" + i + "/Text").GetComponent<Text>();
+                txt = obj.transform.Find("C_Button" + i + "/Text").GetComponent<Text>();
                 txt.text = "";
             }
             i = 1;
-            foreach (KeyValuePair<GameObject, int> item in bag)//背包展现在UI上
+            foreach (KeyValuePair<string, int> item in bag)//背包展现在UI上
             {
-                txt = obj.transform.Find("Image1/C_Button" + i + "/Text").GetComponent<Text>();
-                txt.text = item.Key.name + ": " + item.Value;
+                txt = obj.transform.Find("C_Button" + i + "/Text").GetComponent<Text>();
+                txt.text = item.Key + ": " + item.Value;
                 i++;
             }
         }

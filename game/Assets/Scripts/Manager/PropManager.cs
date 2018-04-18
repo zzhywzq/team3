@@ -7,7 +7,7 @@ public class PropManager : MonoBehaviour {
     public GameObject[] obj;//存放unity拖拽进来的模型，用于随机生成
     public int item_num;//生成物品数 
 
-    Dictionary<GameObject, Vector3> all_prop = new Dictionary<GameObject, Vector3>();
+    private List<GameObject> all_prop = new List<GameObject>();
 
     public void init()
     {
@@ -15,8 +15,14 @@ public class PropManager : MonoBehaviour {
         {
             Vector3 v3 = new Vector3(Random.Range(1105f, 1185f), 20, Random.Range(1069f, 1180f));
             GameObject go = Instantiate(obj[Random.Range(0, obj.Length)], v3, Quaternion.identity);//xyz次序
-            all_prop[go] = v3;
+            all_prop.Add(go);
         }
+    }
+
+    public void addProp(GameObject go, Vector3 v3)
+    {
+        GameObject temp = Instantiate(go, v3, Quaternion.identity);//xyz次序
+        all_prop.Add(temp);
     }
 
     public void removeProp(GameObject go)
