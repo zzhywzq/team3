@@ -5,12 +5,16 @@ using UnityEngine;
 public class Soldier_animation : MonoBehaviour
 {
     Animation m_anim;//控制人物动作
-    private Transform m_Transform;//用于调转人物方向
+    GameObject obj;
+    Camera m_camera;
+    //private Transform m_Transform;//用于调转人物方向
     // 初始化
     void Start()
     {
         m_anim = GetComponent<Animation>();
-        m_Transform = gameObject.GetComponent<Transform>();
+        obj= GameManager.Instance.getCharacterManager().getRigidBodyFPSController();
+        m_camera= obj.GetComponentInChildren<Camera>();
+        //m_Transform = gameObject.GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -23,34 +27,51 @@ public class Soldier_animation : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             m_anim.CrossFade("crouch_idle", 0.2f);
+            m_camera.transform.position.Set(0,0,0);
         }
         if (Input.GetKeyUp(KeyCode.F))
         {
             m_anim.CrossFade("combat_idle_aim", 0.2f);
+            m_camera.transform.position.Set(0, 0.6f, 0);
         }
-        //W键或者上方向键按下的时候
+        //W键或者上方向键按下的时候让人物前进
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            //如果只按下W键或者上方向键按下的时候
             m_anim.CrossFade("combat_run_aim", 0.2f);
         }
-
-        //A键或者左方向键下的时候将人物向左旋转
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            m_Transform.Rotate(Vector3.down * 0.1f, Space.Self);
-        }
-
-        //D键或者右方向键按下的时候将人物向右转
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            m_Transform.Rotate(Vector3.up * 0.1f, Space.Self);
-        }
-
         //S键或者下方向键按下的时候让人物后退
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             m_anim.CrossFade("run_aim_back", 0.2f);
+        }
+
+        //A键或者左方向键按下的时候将人物向左移动
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            m_anim.CrossFade("run_aim_strafe_left", 0.2f);
+        }
+
+        //D键或者右方向键按下的时候将人物向右移动
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            m_anim.CrossFade("run_aim_strafe_right", 0.2f);
+        }
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+            m_anim.CrossFade("run_aim_forward_left", 0.2f);
+        }
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+        {
+            m_anim.CrossFade("run_aim_forward_right", 0.2f);
+        }
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+        {
+            m_anim.CrossFade("run_aim_back_left", 0.2f);
+        }
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+        {
+            m_anim.CrossFade("run_aim_back_right", 0.2f);
         }
 
         //W键、S键或者上方向、下方向键抬起的时候执行idle动画
