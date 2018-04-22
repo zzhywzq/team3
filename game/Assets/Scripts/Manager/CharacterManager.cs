@@ -86,7 +86,7 @@ public class CharacterManager : MonoBehaviour {
         GameObject p = RigidBodyFPSController;
         foreach (string item in bag.Keys)
         {
-            if (item.StartsWith(prop_name) && bag[item] > 0)
+            if (prop_name.StartsWith(item) && bag[item] > 0)
             {
                 GameObject prefab = null;
                 switch (item)
@@ -110,32 +110,5 @@ public class CharacterManager : MonoBehaviour {
             }
         }
 
-        ////1. 由于不能直接删除修改字典，所以创建一个存储字典的列表
-        //List<string> needChangeList = new List<string>();
-        //string[] strArray;//用于截取字符串，创建原对象
-        ////2. 场景中创建物品并将字典内容赋值给列表
-        //if (bag != null && bag.Count > 0)
-        //{
-        //    foreach (var item in bag)
-        //    {
-        //        if (GameManager.Instance.getCanvasManager().getCanvas().transform.Find("Image1/C_Button" + btn_id + "/Text").GetComponent<Text>().text.Contains(item.Key.name))//如果找到拥有此键的
-        //        {
-        //            strArray = item.Key.name.Split('(');//分割
-        //            for (int i = 0; i < item.Value; i++)//创建item.Key对象，数量为item.Value个
-        //            {
-                        
-        //            }
-        //            needChangeList.Add(item.Key.name);
-        //        }
-        //    }
-        //}
-        ////3. 对于列表里面存放的物品，将在字典（背包）中删除
-        //if (needChangeList.Count > 0)
-        //{
-        //    foreach (var item in needChangeList)
-        //    {
-        //        bag.Remove(item);
-        //    }
-        //}
     }
 }

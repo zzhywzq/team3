@@ -58,8 +58,15 @@ public class CanvasManager : MonoBehaviour {
         if (canvas == null)
         {
             canvas = Instantiate(prefab);
-            GameObject obj = canvas.transform.Find("Image1").gameObject;
-            obj.SetActive(false);
+            GameObject Image1 = canvas.transform.Find("Image1").gameObject;
+            Image1.SetActive(false);
+            Button CButton1 = Image1.transform.Find("C_Button1").gameObject.GetComponent<Button>();
+            CButton1.onClick.AddListener(delegate { GameManager.Instance.getCharacterManager().useProp(CButton1.transform.Find("Text").GetComponent<Text>().text); });
+            Button CButton2 = Image1.transform.Find("C_Button2").gameObject.GetComponent<Button>();
+            CButton2.onClick.AddListener(delegate { GameManager.Instance.getCharacterManager().useProp(CButton2.transform.Find("Text").GetComponent<Text>().text); });
+            Button CButton3 = Image1.transform.Find("C_Button3").gameObject.GetComponent<Button>();
+            CButton3.onClick.AddListener(delegate { GameManager.Instance.getCharacterManager().useProp(CButton3.transform.Find("Text").GetComponent<Text>().text); });
+
         }
     }
 
