@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Init_scene.unity
-    guid: b82b4d5400b3f0346a88664b55e04e43
+    path: Assets/startGame.unity
+    guid: cdede0d7d1d5e89429a9aaf891861821
   - enabled: 1
     path: Assets/Shanty Town/Scene.unity
     guid: e3220c40e2365c24e80a6063c4c946ae
+  - enabled: 1
+    path: Assets/gameOver.unity
+    guid: a0432b771687b4e469e385de1d9180ba

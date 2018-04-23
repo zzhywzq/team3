@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;//增加命名空间
+
 
 public class MainCharacter : MonoBehaviour {
 
@@ -20,7 +22,8 @@ public class MainCharacter : MonoBehaviour {
         bool isAlive = cm.dealCollision(col);//交由角色管理器处理
         if (!isAlive)
         {
-            Destroy(this.gameObject);//人物死亡处理。目前销毁相机，后期跳转场景
+            //Destroy(this.gameObject);//人物死亡处理。目前销毁相机，后期跳转场景
+            SceneManager.LoadScene(2);//是场景的索引
         }
 
     }
