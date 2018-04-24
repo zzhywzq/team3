@@ -2,30 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIAttack : MonoBehaviour {
+public class AIAttack : MonoBehaviour
+{
 
     //public GameObject mouth;
     //public GameObject attack_fire;
     private GameObject fire_effect;
     private Vector3 local_pos;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         // 加载火焰特效
         fire_effect = Resources.Load("DragonEffect_001") as GameObject;
-        
+
         // 火焰特效与龙的相对坐标
-        local_pos = new Vector3(-3.267612f, -1.05427f, 14.97258f);
+        local_pos = new Vector3(-3.1f, -1.35f, 25.4f); //龙scale 0.4 0.4 0.4 火焰0.4 0.4 1.6
+        //local_pos = new Vector3(-3.267612f, -1.05427f, 14.97258f); 龙:scale 1 1 1
         //local_pos = transform.InverseTransformPoint(attack_fire.transform.position);
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            StartCoroutine(Attack());
-        }
+    // Update is called once per frame
+    void Update()
+    {
+
+        //if (Input.GetKeyDown(KeyCode.J))
+        //{
+        //    StartCoroutine(Attack());
+        //}
     }
 
     public void Att()
@@ -35,7 +39,7 @@ public class AIAttack : MonoBehaviour {
 
     IEnumerator Attack()
     {
-        GetComponent<Animation>().Play("breath fire");     
+        GetComponent<Animation>().Play("breath fire");
         yield return new WaitForSeconds(0.5f);
 
         //pos.x -= 3.28f;

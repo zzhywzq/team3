@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI : MonoBehaviour {
+public class AI : MonoBehaviour
+{
 
     #region variable  
     [SerializeField] //保护封装性  
     private float speed = 20f;
     [SerializeField]
     private WayPoint targetPoint, startPoint;
-    //[SerializeField]
-    //private Hero mage;
+    [SerializeField]
+    private GameObject player;
 
     #endregion
 
@@ -25,8 +26,8 @@ public class AI : MonoBehaviour {
         {
             targetPoint = startPoint;
         }
-        transform.LookAt(targetPoint.transform.position);
-        GetComponent<Animation>().Play("run");
+
+        TowardToTargetAndRun(targetPoint.transform.position);
 
         StartCoroutine(AINavMesh());
     }
@@ -37,21 +38,23 @@ public class AI : MonoBehaviour {
         {
             if (Vector3.Distance(transform.position, targetPoint.transform.position) < 1.5f)
             {
-                AIAttack aa = GetComponent<AIAttack>();
-                aa.Att();
-                yield return new WaitForSeconds(3.2f);
+                //AIAttack aa = GetComponent<AIAttack>();
+                //aa.Att();
+                //yield return new WaitForSeconds(3.2f);
 
                 targetPoint = targetPoint.nextWayPoint;
-                transform.LookAt(targetPoint.transform.position);
+                yield return new WaitForSeconds(0.1f);
 
-                yield return new WaitForSeconds(0.15f);
-                GetComponent<Animation>().Play("run");
+                TowardToTargetAndRun(targetPoint.transform.position);
             }
-            //if (mage != null && Vector3.Distance(transform.position, mage.gameObject.transform.position) <= 6f)
-            //{
-            //    Debug.Log("侦测到敌人，开始追击！！！");
-            //    yield return StartCoroutine(AIFollowHero());
-            //}
+
+            if (player != null && Vector3.Distance(transform.position, player.gameObject.transform.position) <= 22f) //最大26.5
+            {
+                //Debug.Log("侦测到敌人，开始追击！！！");
+                yield return StartCoroutine(AIFollowHero());
+
+                TowardToTargetAndRun(targetPoint.transform.position);
+            }
 
             Vector3 dir = targetPoint.transform.position - transform.position;
             transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
@@ -61,20 +64,35 @@ public class AI : MonoBehaviour {
         }
     }
 
-    /*
     IEnumerator AIFollowHero()
     {
         while (true)
         {
-            if (mage != null && Vector3.Distance(transform.position, mage.gameObject.transform.position) > 6f)
+            if (player != null && Vector3.Distance(transform.position, player.gameObject.transform.position) > 22f)
             {
-                Debug.Log("敌人已走远，放弃攻击！！！");
+                //Debug.Log("敌人已走远，放弃攻击！！！");
                 yield break;
             }
-            Vector3 dir = mage.transform.position - transform.position;
-            transform.Translate(dir.normalized * Time.deltaTime * speed * 0.8f);
+
+            if (player != null && Vector3.Distance(transform.position, player.gameObject.transform.position) <= 10f) //最远距离16
+            {
+                AIAttack aa = GetComponent<AIAttack>();
+                aa.Att();
+                yield return new WaitForSeconds(3.2f);
+            }
+
+            TowardToTargetAndRun(player.transform.position);
+
+            Vector3 dir = player.transform.position - transform.position;
+            transform.Translate(dir.normalized * Time.deltaTime * speed * 0.8f, Space.World);
             yield return new WaitForEndOfFrame();
         }
     }
-    */
+
+    private void TowardToTargetAndRun(Vector3 position)
+    {
+        transform.LookAt(position);
+        GetComponent<Animation>().Play("run");
+    }
+
 }
