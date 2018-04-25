@@ -5,47 +5,39 @@ using UnityEngine;
 public class AI : MonoBehaviour
 {
 
-    #region variable  
-    [SerializeField] //保护封装性  
-    private float speed = 20f;
-    [SerializeField]
-    private WayPoint targetPoint, startPoint;
-    [SerializeField]
     private GameObject player;
 
+    #region variable  
+    [SerializeField] //保护封装性  
+    private float speed = 15f;
+    [SerializeField]
+    private GameObject targetPoint;
     #endregion
 
     // Use this for initialization  
     void Start()
     {
-        if (Vector3.Distance(transform.position, startPoint.transform.position) < 1.5f)
-        {
-            targetPoint = startPoint.nextWayPoint;
-        }
-        else
-        {
-            targetPoint = startPoint;
-        }
-
-        TowardToTargetAndRun(targetPoint.transform.position);
-
+        player = GameManager.characterManager.getRigidBodyFPSController();
+       
         StartCoroutine(AINavMesh());
     }
 
     IEnumerator AINavMesh()
     {
+        Vector3 dir;
+        yield return new WaitForSeconds(1f);
+
         while (true)
         {
-            if (Vector3.Distance(transform.position, targetPoint.transform.position) < 1.5f)
+            if (Vector3.Distance(transform.position, targetPoint.transform.position) >= 1f)
             {
-                //AIAttack aa = GetComponent<AIAttack>();
-                //aa.Att();
-                //yield return new WaitForSeconds(3.2f);
-
-                targetPoint = targetPoint.nextWayPoint;
-                yield return new WaitForSeconds(0.1f);
-
                 TowardToTargetAndRun(targetPoint.transform.position);
+                dir = targetPoint.transform.position - transform.position;
+                transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
+            }
+            else
+            {
+                GetComponent<Animation>().Play("idle");
             }
 
             if (player != null && Vector3.Distance(transform.position, player.gameObject.transform.position) <= 22f) //最大26.5
@@ -54,12 +46,10 @@ public class AI : MonoBehaviour
                 yield return StartCoroutine(AIFollowHero());
 
                 TowardToTargetAndRun(targetPoint.transform.position);
+                dir = targetPoint.transform.position - transform.position;
+                transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
             }
-
-            Vector3 dir = targetPoint.transform.position - transform.position;
-            transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
-            //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPoint.transform.position, Time.deltaTime * speed);
-
+           
             yield return new WaitForEndOfFrame();
         }
     }
