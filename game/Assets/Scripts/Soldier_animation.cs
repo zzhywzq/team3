@@ -21,6 +21,7 @@ public class Soldier_animation : MonoBehaviour
     //当任务按住上或下执行前进或后退动作，同时按住左键或右键使调转人物朝向（按F 键时人物下蹲，可用于捡东西）
     void OnGUI()
     {
+        int stat = 0;//0站1蹲
         //按F键下蹲
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -29,14 +30,14 @@ public class Soldier_animation : MonoBehaviour
             obj.transform.localPosition=new Vector3(0,0.2f,0);//修改放在start函数里可以修改
         }
         //按G键站立
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyUp(KeyCode.F))
         {
             m_anim.CrossFade("combat_idle_aim", 0.2f);
             GameObject obj = GameManager.Instance.getCharacterManager().getRigidBodyFPSController().transform.Find("MainCamera").gameObject;//相机是可以找到的
             obj.transform.localPosition = new Vector3(0, 0.6f, 0);//修改放在start函数里可以修改
         }
         //W键或者上方向键按下的时候让人物前进
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.W) && stat==0)
         {
             m_anim.CrossFade("combat_run_aim", 0.2f);
         }
