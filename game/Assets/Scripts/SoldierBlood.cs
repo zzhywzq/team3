@@ -13,8 +13,6 @@ public class SoldierBlood : MonoBehaviour {
     public Texture2D blood_red;
     //黑色血条贴图
     public Texture2D blood_black;
-    //默认NPC血值
-    private int HP = 100;
 
     void Start()
     {
@@ -45,7 +43,7 @@ public class SoldierBlood : MonoBehaviour {
         Vector2 bloodSize = GUI.skin.label.CalcSize(new GUIContent(blood_red));
 
         //通过血值计算红色血条显示区域
-        int blood_width = blood_red.width * HP / 100;
+        int blood_width = blood_red.width * GameManager.Instance.getCharacterManager().blood / 100;
         //先绘制黑色血条
         GUI.DrawTexture(new Rect(position.x - (bloodSize.x / 2), position.y - bloodSize.y, bloodSize.x, bloodSize.y), blood_black);
         //在绘制红色血条
