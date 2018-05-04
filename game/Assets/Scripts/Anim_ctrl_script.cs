@@ -10,32 +10,41 @@ public class Anim_ctrl_script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
+        {
             this.anim.SetInteger("anim_state", 1);//人物状态
+            GameObject obj = GameManager.Instance.getCharacterManager().getRigidBodyFPSController().transform.Find("MainCamera").gameObject;//相机是可以找到的
+            obj.transform.localPosition = new Vector3(0, 0.4f, 0);//修改放在start函数里可以修改
+        }
         if (Input.GetKeyDown(KeyCode.G))
+        {
             this.anim.SetInteger("anim_state", 0);
+            GameObject obj = GameManager.Instance.getCharacterManager().getRigidBodyFPSController().transform.Find("MainCamera").gameObject;//相机是可以找到的
+            obj.transform.localPosition = new Vector3(0, 0.6f, 0);//修改放在start函数里可以修改
+        }
 
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+
+        if (!Input.GetKey(KeyCode.W)&& !Input.GetKey(KeyCode.S)&& !Input.GetKey(KeyCode.A)&& !Input.GetKey(KeyCode.D))
         {
             this.anim.SetInteger("move_state", 0);
+                
         }
-        if (this.anim.GetInteger("move_state") != 0) return;
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             this.anim.SetInteger("move_state", 1);//移动状态
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             this.anim.SetInteger("move_state", 2);
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             this.anim.SetInteger("move_state", 3);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             this.anim.SetInteger("move_state", 4);
         }
-        
+
     }
 }
