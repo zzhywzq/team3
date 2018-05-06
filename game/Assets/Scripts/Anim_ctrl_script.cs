@@ -10,13 +10,13 @@ public class Anim_ctrl_script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             this.anim.SetInteger("anim_state", 1);//人物状态
             GameObject obj = GameManager.Instance.getCharacterManager().getRigidBodyFPSController().transform.Find("MainCamera").gameObject;//相机是可以找到的
             obj.transform.localPosition = new Vector3(0, 0.4f, 0);//修改放在start函数里可以修改
         }
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             this.anim.SetInteger("anim_state", 0);
             GameObject obj = GameManager.Instance.getCharacterManager().getRigidBodyFPSController().transform.Find("MainCamera").gameObject;//相机是可以找到的

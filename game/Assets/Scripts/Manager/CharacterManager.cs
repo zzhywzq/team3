@@ -9,7 +9,10 @@ public class CharacterManager : MonoBehaviour {
     public GameObject prefab;
     public GameObject cam;
     public int blood = 100;
-    Dictionary<string, int> bag = new Dictionary<string, int>();//键值对数组 <名字，数量>
+    Dictionary<string, int> bag1 = new Dictionary<string, int>();//键值对数组 <名字，数量>
+    Dictionary<string, int> bag2 = new Dictionary<string, int>();//键值对数组 <名字，数量>
+    Dictionary<string, int> bag3 = new Dictionary<string, int>();//键值对数组 <名字，数量>
+
     public int defend = 5;
     public int jump_high = 5;
 
@@ -36,8 +39,15 @@ public class CharacterManager : MonoBehaviour {
         return RigidBodyFPSController;
     }
 
-    public Dictionary<string, int> getBag()
+    public Dictionary<string, int> getBag(int bag_id)
     {
+        Dictionary<string, int> bag = new Dictionary<string, int>(); 
+        if (bag_id == 1)
+            bag= bag1;
+        else if (bag_id == 2)
+            bag= bag2;
+        else if (bag_id == 3)
+            bag= bag3;
         return bag;
     }
 
@@ -69,8 +79,11 @@ public class CharacterManager : MonoBehaviour {
         }
     }
 
-    public void addProp(string prop, int prop_num)
+    public void addProp(string prop, int prop_num,int prop_type)
     {
+        Dictionary<string, int> bag = new Dictionary<string, int>();
+        bag = getBag(prop_type);
+
         if (bag.ContainsKey(prop))
         {
             bag[prop] += prop_num;//物品数加一
@@ -81,9 +94,11 @@ public class CharacterManager : MonoBehaviour {
         }
     }
 
-    public void useProp(string prop_name)//点下按钮是第几个，给按钮添加脚本后应输入的参数
+    public void useProp(string prop_name,int bag_id)//点下按钮是第几个，给按钮添加脚本后应输入的参数
     {
         GameObject p = RigidBodyFPSController;
+        Dictionary<string, int> bag = new Dictionary<string, int>();
+        bag = getBag(bag_id);
         foreach (string item in bag.Keys)
         {
             if (prop_name.StartsWith(item) && bag[item] > 0)
@@ -91,14 +106,23 @@ public class CharacterManager : MonoBehaviour {
                 GameObject prefab = null;
                 switch (item)
                 {
-                    case "Cube1(Clone)":
+                    case "cloth1(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[0];
                         break;
-                    case "Cube2(Clone)":
+                    case "gun1(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[1];
                         break;
-                    case "Cube3(Clone)":
+                    case "gun2(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[2];
+                        break;
+                    case "thing1(Clone)":
+                        prefab = GameManager.Instance.getPropManager().obj[3];
+                        break;
+                    case "thing2(Clone)":
+                        prefab = GameManager.Instance.getPropManager().obj[4];
+                        break;
+                    case "thing3(Clone)":
+                        prefab = GameManager.Instance.getPropManager().obj[5];
                         break;
                 }
                 GameManager.Instance.getPropManager().addProp(prefab, new Vector3(p.transform.position.x, p.transform.position.y + 3, p.transform.position.z));
@@ -112,3 +136,6 @@ public class CharacterManager : MonoBehaviour {
 
     }
 }
+//        GameManager.Instance.getCanvasManager().getCanvas().transform.Find("ButtonDebug/Text").GetComponent<Text>().text = "bag" + prop_type;
+
+    //debug神句

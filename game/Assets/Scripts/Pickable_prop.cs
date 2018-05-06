@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Pickable_prop : MonoBehaviour {
     // Use this for initialization
+    public int prop_type=0;
+    public int get_prop_type() {
+        return prop_type;
+    }
     void Start () {
 
     }
@@ -17,7 +21,7 @@ public class Pickable_prop : MonoBehaviour {
         string name = col.gameObject.name;
         if (name.Contains("RigidBodyFPSController") && Input.GetKey(KeyCode.F) )//如果检测到物体X是人物  并且 玩家按下F
         {
-            GameManager.Instance.getCharacterManager().addProp(gameObject.name, 1);
+            GameManager.Instance.getCharacterManager().addProp(gameObject.name, 1, get_prop_type());
             Destroy(gameObject);//消除地面上的物品
         }
         //另一种方法：将脚本添加给人物Y，检测碰撞体的tag是item_tag

@@ -8043,10 +8043,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj:
-  - {fileID: 1686870590483868, guid: 6a25922f9667a114498cec5fc97b297d, type: 2}
-  - {fileID: 1974479542551870, guid: 44a744c081751c245a58143e14e851b9, type: 2}
-  - {fileID: 1788188608672732, guid: ce74fccec624f3b4eb0f8b0168f6aa6e, type: 2}
-  item_num: 50
+  - {fileID: 1064515886304658, guid: 7b88fb9c9db52264d8d9858eeb0f4665, type: 2}
+  - {fileID: 1714077185801248, guid: 42f487e211316254881f8645860ab1e1, type: 2}
+  - {fileID: 1894803163971354, guid: 1998120ab03d62b4faefd3c8a957ea9f, type: 2}
+  - {fileID: 1121475109089702, guid: 1b1175d800893d142b8aee5d9756a5fa, type: 2}
+  - {fileID: 1251878261344976, guid: fd3d319a96c6ce6449aecd1e8d892e35, type: 2}
+  - {fileID: 1683172743523814, guid: af1f1e013aa7ad04e950b01f8d459b90, type: 2}
+  item_num: 88
 --- !u!4 &1084938497
 Transform:
   m_ObjectHideFlags: 0
@@ -15429,8 +15432,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45321af60f4f9674b8dc3f2c25f7cbd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1509651416645446, guid: d533681507403c747a83c42d9253bf5d, type: 2}
-  btn_size: 3
+  prefab: {fileID: 1784680725787290, guid: d533681507403c747a83c42d9253bf5d, type: 2}
+  bag_num: 3
+  bag1_size: 3
+  bag2_size: 2
+  bag3_size: 1
 --- !u!4 &1927853718
 Transform:
   m_ObjectHideFlags: 0
