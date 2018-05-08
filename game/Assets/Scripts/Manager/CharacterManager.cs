@@ -79,19 +79,35 @@ public class CharacterManager : MonoBehaviour {
         }
     }
 
-    public void addProp(string prop, int prop_num,int prop_type)
+    public bool addProp(string prop, int prop_num,int prop_type)
     {
         Dictionary<string, int> bag = new Dictionary<string, int>();
         bag = getBag(prop_type);
-
-        if (bag.ContainsKey(prop))
+        if (prop_type == 2)//如果是武器，不能叠加捡
         {
-            bag[prop] += prop_num;//物品数加一
+            if (bag.ContainsKey(prop))//判断背包2是不是有这把枪，如果背包2已有这把枪
+            {
+                return false;//不能再捡起了
+                //GameManager.Instance.getCharacterManager().useProp(prop, 2);
+                //bag.Add(prop, prop_num);//在字典中添加一个新的物品
+            }
+            else//如果没
+            {
+                bag.Add(prop, prop_num);//在字典中添加一个新的物品
+            }
         }
-        else
+        else//如果不是武器，可以叠加捡
         {
-            bag.Add(prop, prop_num);//在字典中添加一个新的物品
+            if (bag.ContainsKey(prop))//判断背包里有没有这个东西，如果有
+            {
+                bag[prop] += prop_num;//物品数加一
+            }
+            else//如果没有
+            {
+                bag.Add(prop, prop_num);//在字典中添加一个新的物品
+            }
         }
+        return true;
     }
 
     public void useProp(string prop_name,int bag_id)//点下按钮是第几个，给按钮添加脚本后应输入的参数
@@ -109,13 +125,13 @@ public class CharacterManager : MonoBehaviour {
                     case "cloth1(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[0];
                         break;
-                    case "gun1(Clone)":
+                    case "m4a1(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[1];
                         break;
-                    case "gun2(Clone)":
+                    case "M249saw(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[2];
                         break;
-                    case "thing1(Clone)":
+                    case "AmmoBox(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[3];
                         break;
                     case "thing2(Clone)":
