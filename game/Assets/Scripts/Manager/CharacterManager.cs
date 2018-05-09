@@ -83,30 +83,42 @@ public class CharacterManager : MonoBehaviour {
     {
         Dictionary<string, int> bag = new Dictionary<string, int>();
         bag = getBag(prop_type);
-        if (prop_type == 2)//如果是武器，不能叠加捡
+        switch (prop_type)
         {
-            if (bag.ContainsKey(prop))//判断背包2是不是有这把枪，如果背包2已有这把枪
-            {
-                return false;//不能再捡起了
-                //GameManager.Instance.getCharacterManager().useProp(prop, 2);
-                //bag.Add(prop, prop_num);//在字典中添加一个新的物品
-            }
-            else//如果没
-            {
-                bag.Add(prop, prop_num);//在字典中添加一个新的物品
-            }
+            case 1://如果是道具
+                if (bag.ContainsKey(prop))//判断背包里有没有这个东西，如果有
+                {
+                    bag[prop] += prop_num;//物品数加一
+                }
+                else//如果没有
+                {
+                    bag.Add(prop, prop_num);//在字典中添加一个新的物品
+                }
+                 break;
+            case 2://如果是武器
+                if (bag.ContainsKey(prop))//判断背包2是不是有这把枪，如果背包2已有这把枪
+                {
+                    return false;//不能再捡起了
+                                 //GameManager.Instance.getCharacterManager().useProp(prop, 2);
+                                 //bag.Add(prop, prop_num);//在字典中添加一个新的物品
+                }
+                else//如果没
+                {
+                    bag.Add(prop, prop_num);//在字典中添加一个新的物品
+                }
+                break;
+            case 3://如果是armor
+                if (bag.ContainsKey(prop))//判断背包里有没有armor，如果有
+                {
+                    return false;
+                }
+                else//如果没有
+                {
+                    bag.Add(prop, prop_num);//在字典中添加一个新的物品
+                }
+                break;
         }
-        else//如果不是武器，可以叠加捡
-        {
-            if (bag.ContainsKey(prop))//判断背包里有没有这个东西，如果有
-            {
-                bag[prop] += prop_num;//物品数加一
-            }
-            else//如果没有
-            {
-                bag.Add(prop, prop_num);//在字典中添加一个新的物品
-            }
-        }
+
         return true;
     }
 
@@ -122,7 +134,7 @@ public class CharacterManager : MonoBehaviour {
                 GameObject prefab = null;
                 switch (item)
                 {
-                    case "cloth1(Clone)":
+                    case "M_Armor_C_01(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[0];
                         break;
                     case "m4a1(Clone)":
@@ -131,13 +143,13 @@ public class CharacterManager : MonoBehaviour {
                     case "M249saw(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[2];
                         break;
-                    case "AmmoBox(Clone)":
+                    case "Drink(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[3];
                         break;
-                    case "thing2(Clone)":
+                    case "emergencyBangadeBig(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[4];
                         break;
-                    case "thing3(Clone)":
+                    case "FirstAidPackMilitary(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[5];
                         break;
                 }
