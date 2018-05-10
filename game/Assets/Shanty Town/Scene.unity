@@ -2462,7 +2462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1517089091613588, guid: 7def2974e3a96a540b00405acc63b76f, type: 2}
-  blood: 2147483647
+  blood: 60
   defend: 5
   jump_high: 5
 --- !u!4 &355171504

@@ -114,6 +114,7 @@ public class CharacterManager : MonoBehaviour {
                 else//如果没有
                 {
                     bag.Add(prop, prop_num);//在字典中添加一个新的物品
+                    defend = 10;
                 }
                 break;
         }
@@ -134,25 +135,34 @@ public class CharacterManager : MonoBehaviour {
                 switch (item)
                 {
                     case "M_Armor_C_01(Clone)":
+                        defend = 5;
                         prefab = GameManager.Instance.getPropManager().obj[0];
+                        GameManager.Instance.getPropManager().addProp(prefab, new Vector3(p.transform.position.x, p.transform.position.y + 3, p.transform.position.z));
                         break;
                     case "m4a1(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[1];
+                        GameManager.Instance.getPropManager().addProp(prefab, new Vector3(p.transform.position.x, p.transform.position.y + 3, p.transform.position.z));
                         break;
                     case "M249saw(Clone)":
                         prefab = GameManager.Instance.getPropManager().obj[2];
+                        GameManager.Instance.getPropManager().addProp(prefab, new Vector3(p.transform.position.x, p.transform.position.y + 3, p.transform.position.z));
                         break;
                     case "Drink(Clone)":
-                        prefab = GameManager.Instance.getPropManager().obj[3];
+                        if (blood <= 99)
+                            blood = blood + 1;
+                        else if (blood > 99)
+                            blood = 100;
                         break;
                     case "emergencyBangadeBig(Clone)":
-                        prefab = GameManager.Instance.getPropManager().obj[4];
+                        if (blood <= 90)
+                            blood = blood + 10;
+                        else if (blood > 90)
+                            blood = 100;
                         break;
                     case "FirstAidPackMilitary(Clone)":
-                        prefab = GameManager.Instance.getPropManager().obj[5];
-                        break;
-                }
-                GameManager.Instance.getPropManager().addProp(prefab, new Vector3(p.transform.position.x, p.transform.position.y + 3, p.transform.position.z));
+                        if(blood<=75)
+                            blood = 75;
+                        break;                }
                 bag[item]--;
                 if (bag[item] <= 0)
                 {

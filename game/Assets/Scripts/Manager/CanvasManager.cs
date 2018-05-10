@@ -28,6 +28,7 @@ public class CanvasManager : MonoBehaviour {
         update_bag(1);
         update_bag(2);
         update_bag(3);
+                GameManager.Instance.getCanvasManager().getCanvas().transform.Find("ButtonDebug/Text").GetComponent<Text>().text = "blood"+ GameManager.Instance.getCharacterManager().blood;
 
     }
 
