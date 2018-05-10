@@ -847,15 +847,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517089091613588}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 1184.31, y: 14.056, z: 1073.44}
+  m_LocalRotation: {x: -0, y: 0.9747742, z: -0, w: 0.22319365}
+  m_LocalPosition: {x: 1184.4995, y: 14.056, z: 1073.6432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4650299507464742}
   - {fileID: 4075263862774578}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 154.207, z: 0}
 --- !u!4 &4323192114348880
 Transform:
   m_ObjectHideFlags: 1
@@ -1874,6 +1874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blood_red: {fileID: 2800000, guid: c475ed8087566c94baa7e5e9af243587, type: 3}
   blood_black: {fileID: 2800000, guid: 77de386a105e6b94eb10f50255b71e16, type: 3}
+  blood: 100
 --- !u!114 &114726547991015972
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour {
         {
             _instance = FindObjectOfType(typeof(GameManager)) as GameManager;
         }
+        if (null == characterManager)
+        {
+            characterManager = FindObjectOfType(typeof(CharacterManager)) as CharacterManager;
+        }
         if (null == bossManager)
         {
             bossManager = FindObjectOfType(typeof(BossManager)) as BossManager;
@@ -24,10 +28,6 @@ public class GameManager : MonoBehaviour {
         if (null == propManager)
         {
             propManager = FindObjectOfType(typeof(PropManager)) as PropManager;
-        }
-        if (null == characterManager)
-        {
-            characterManager = FindObjectOfType(typeof(CharacterManager)) as CharacterManager;
         }
         if (null == canvasManager)
         {
@@ -38,10 +38,10 @@ public class GameManager : MonoBehaviour {
     void Start()
     {
         init();
-        canvasManager.init();
-        bossManager.init();
-        propManager.init();
         characterManager.init();
+        bossManager.init();
+        canvasManager.init();
+        propManager.init();
     }
 
     public static GameManager Instance

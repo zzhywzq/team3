@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class BossManager : MonoBehaviour {
 
+    private GameObject Boss;
+    public GameObject prefab;
+
     public void init()
     {
-
+        if (Boss == null)
+        {
+            Boss = Instantiate(prefab);
+        }
     }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -18,4 +24,10 @@ public class BossManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public GameObject getBoss()
+    {
+        return Boss;
+    }
+
 }

@@ -7,7 +7,6 @@ public class CharacterManager : MonoBehaviour {
 
     private GameObject RigidBodyFPSController;
     public GameObject prefab;
-    public GameObject cam;
     public int blood = 100;
     Dictionary<string, int> bag1 = new Dictionary<string, int>();//键值对数组 <名字，数量>
     Dictionary<string, int> bag2 = new Dictionary<string, int>();//键值对数组 <名字，数量>

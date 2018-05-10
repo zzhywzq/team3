@@ -17,8 +17,8 @@ public class AI : MonoBehaviour
     // Use this for initialization  
     void Start()
     {
-        player = GameManager.characterManager.getRigidBodyFPSController();
        
+        player = GameManager.characterManager.getRigidBodyFPSController();
         StartCoroutine(AINavMesh());
     }
 
@@ -26,7 +26,6 @@ public class AI : MonoBehaviour
     {
         Vector3 dir;
         yield return new WaitForSeconds(1f);
-
         while (true)
         {
             if (Vector3.Distance(transform.position, targetPoint.transform.position) >= 1f)
@@ -37,9 +36,9 @@ public class AI : MonoBehaviour
             }
             else
             {
+                
                 GetComponent<Animation>().Play("idle");
             }
-
             if (player != null && Vector3.Distance(transform.position, player.gameObject.transform.position) <= 22f) //最大26.5
             {
                 //Debug.Log("侦测到敌人，开始追击！！！");
