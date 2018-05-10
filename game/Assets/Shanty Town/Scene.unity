@@ -2218,7 +2218,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 458240, guid: 0a9cab361d9f146419978fa2bad4b392, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1209.4
+      value: 1203.73
       objectReference: {fileID: 0}
     - target: {fileID: 458240, guid: 0a9cab361d9f146419978fa2bad4b392, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2259,6 +2259,18 @@ Prefab:
     - target: {fileID: 458240, guid: 0a9cab361d9f146419978fa2bad4b392, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 458238, guid: 0a9cab361d9f146419978fa2bad4b392, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 31.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 458238, guid: 0a9cab361d9f146419978fa2bad4b392, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -57.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 458238, guid: 0a9cab361d9f146419978fa2bad4b392, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a9cab361d9f146419978fa2bad4b392, type: 2}
@@ -2305,6 +2317,31 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 3b1de3c9a4bd68643bffb689c20e6e1e, type: 3}
+--- !u!114 &266802865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 266802861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4e8834e3a289f4295f4101cd6d2f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blood_red: {fileID: 2800000, guid: e58d7769af939f944aa34c67b70e282b, type: 3}
+  blood_black: {fileID: 2800000, guid: 10128b69fbc157349b8e13c657fe1137, type: 3}
+--- !u!114 &266802866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 266802861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec63b2f6a05833b4481ad4d002f1f3a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blood: 100
 --- !u!4 &278005694 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 4674719644b386844bf6369a4e95a7a0, type: 3}

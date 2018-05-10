@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoldierBlood : MonoBehaviour {
 
     //主摄像机对象
-    private Camera camera;
+    private Camera camera = Camera.main;
 
     //NPC模型高度
     float npcHeight;
@@ -17,11 +17,10 @@ public class SoldierBlood : MonoBehaviour {
     void Start()
     {
         //得到摄像机对象
-        camera = Camera.main;
 
         //注解1
         //得到模型原始高度
-        float size_y = GameManager.Instance.getCharacterManager().getRigidBodyFPSController().gameObject.GetComponent<Collider>().bounds.size.y;
+        float size_y = gameObject.GetComponent<Collider>().bounds.size.y;
         //得到模型缩放比例
         float scal_y = transform.localScale.y;
         //它们的乘积就是高度
